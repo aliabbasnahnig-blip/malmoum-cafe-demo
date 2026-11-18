@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2eee6">
+<meta name="description" content="Malmoum Café in Riyadh — coffee, culture and a creative place to connect. Independent website concept.">
+<title>Malmoum — Coffee & Culture in Riyadh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#f2eee6;
+  --paper:#faf8f3;
+  --ink:#292c26;
+  --olive:#33392e;
+  --muted:#716f66;
+  --gold:#b38a50;
+  --border:#d9d2c5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.container{width:min(1260px,calc(100% - 72px));margin:auto}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#967342}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{font-family:Manrope,sans-serif}
+h2{font-size:clamp(38px,5vw,72px);line-height:1.08;letter-spacing:-.075em}
+p{line-height:1.8}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:30px;
+  padding:15px 24px;background:var(--ink);color:white;
+  border:1px solid var(--ink);border-radius:40px;
+  font-size:12px;font-weight:800;transition:.25s;
+}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.btn-light:hover{background:#ddc59d;border-color:#ddc59d}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:100}
+.header{position:sticky;top:0;z-index:50;background:rgba(242,238,230,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav{height:80px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-ar{font-size:31px;font-weight:700;letter-spacing:-.08em}
+.logo-line{width:1px;height:30px;background:#b8ae9f}
+.logo-en{font-size:10px;letter-spacing:.23em;font-weight:800;line-height:1.55}
+.nav-links{display:flex;gap:30px;align-items:center;font-size:12px;font-weight:700}
+.nav-links a:hover{color:var(--gold)}
+.nav-pill{border:1px solid var(--ink);padding:12px 19px;border-radius:30px}
+.menu-toggle{display:none;border:0;background:transparent;font-size:26px}
+.hero{padding:54px 0 75px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:55px;align-items:center}
+.hero-copy{padding:20px 0}
+.hero h1{
+  font-size:clamp(56px,7.3vw,106px);
+  line-height:1.02;letter-spacing:-.09em;
+  margin:22px 0 25px;
+}
+.hero h1 span{color:var(--gold)}
+.hero-desc{font-size:16px;color:var(--muted);max-width:400px;margin-bottom:32px}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.text-link{font-size:12px;font-weight:800;border-bottom:1px solid var(--gold);padding-bottom:8px}
+.hero-photo{
+  height:560px;position:relative;overflow:hidden;
+  border-radius:24px 100px 24px 24px;
+  background:#d0bda3;
+}
+.hero-photo img{object-position:center;transition:transform 1.2s}
+.hero-photo:hover img{transform:scale(1.04)}
+.hero-photo:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,#0008);pointer-events:none}
+.photo-caption{
+  position:absolute;bottom:26px;left:28px;right:28px;
+  display:flex;align-items:end;justify-content:space-between;gap:20px;
+  z-index:2;color:white;
+}
+.photo-caption strong{font:700 19px Manrope,sans-serif}
+.photo-caption small{font-size:10px;letter-spacing:.14em}
+.photo-caption .circle{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--paper);color:var(--ink);
+  display:grid;place-items:center;font-size:20px;
+}
+.hero-bottom{
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;gap:20px;
+  font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#7b786e;font-weight:700;
+}
+.intro{padding:105px 0;background:var(--paper)}
+.intro-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px;align-items:start}
+.intro h2{margin:18px 0 0}
+.intro-copy{max-width:560px}
+.intro-copy p{font-size:clamp(17px,2vw,21px);color:#5e6058;line-height:1.85}
+.intro-copy .text-link{display:inline-block;margin-top:10px}
+.feature{padding:100px 0;background:var(--olive);color:var(--paper)}
+.feature-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:35px}
+.feature .eyebrow{color:#d9b27a}
+.feature h2{margin:15px 0 0;max-width:680px}
+.feature-head p{font-size:13px;color:#c2c5b9;max-width:290px}
+.switches{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.switch{
+  border:1px solid #8a8e7e;color:var(--paper);background:transparent;
+  padding:12px 22px;border-radius:30px;font-size:12px;font-weight:700;
+}
+.switch.active,.switch:hover{background:#e7d0a8;color:var(--ink);border-color:#e7d0a8}
+.feature-stage{
+  display:grid;grid-template-columns:1fr .75fr;gap:50px;
+  min-height:300px;align-items:center;
+  border-top:1px solid #73786b;padding-top:42px;
+}
+.feature-stage h3{font-size:clamp(32px,4vw,55px);line-height:1.15;letter-spacing:-.07em;margin:0 0 20px}
+.feature-stage p{font-size:15px;color:#c7c8bc;max-width:480px}
+.feature-art{
+  height:260px;display:grid;place-items:center;
+  background:#485040;border-radius:22px 90px 22px 22px;
+  position:relative;overflow:hidden;
+}
+.feature-art:before{
+  content:"";position:absolute;width:270px;height:270px;
+  border:1px solid #8b907c;border-radius:50%;
+  transform:translate(-80px,70px);
+}
+.feature-art:after{
+  content:"";position:absolute;width:230px;height:230px;
+  border:1px solid #8b907c;border-radius:50%;
+  transform:translate(100px,-75px);
+}
+.feature-art span{position:relative;z-index:1;font-size:80px;color:#d7b680;font-weight:700}
+.feature-art[data-mode="art"]{background:#7c684d}
+.feature-art[data-mode="art"] span{font-size:100px}
+.feature-art[data-mode="community"]{background:#655f4c}
+.feature-art[data-mode="community"] span{font-size:80px}
+.visit{padding:110px 0}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.visit h2{margin:18px 0 22px}
+.visit p{color:var(--muted);font-size:15px}
+.visit-card{
+  background:#e5d9c6;border:1px solid #d6c7af;
+  border-radius:26px;padding:45px;
+  min-height:360px;display:flex;flex-direction:column;justify-content:space-between;
+}
+.visit-card .arabic{font-size:80px;color:#ad8650;font-weight:700;letter-spacing:-.09em}
+.visit-card .card-bottom{display:flex;justify-content:space-between;gap:20px;align-items:end}
+.visit-card .card-bottom strong{font:800 23px Manrope,sans-serif;letter-spacing:-.06em}
+.visit-card .card-bottom small{font-size:11px;color:#71695d;line-height:1.7;text-align:right}
+.footer{background:#e3d8c7;padding:45px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:25px}
+.footer-brand{font:800 27px Manrope,sans-serif;letter-spacing:-.07em}
+.footer-copy{font-size:10px;color:#716b61;line-height:1.8;max-width:460px;text-align:right}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:850px){
+  .container{width:calc(100% - 40px)}
+  .nav{height:72px}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:var(--paper);padding:25px;flex-direction:column;
+    align-items:stretch;box-shadow:0 18px 30px #0002;
+  }
+  .nav-links.open{display:flex}
+  .hero-grid,.intro-grid,.visit-grid{grid-template-columns:1fr;gap:35px}
+  .hero{padding:35px 0 55px}
+  .hero-photo{height:480px}
+  .intro,.feature,.visit{padding:75px 0}
+  .feature-head{display:block}
+  .feature-stage{grid-template-columns:1fr}
+  .feature-art{height:220px}
+}
+@media(max-width:500px){
+  .hero h1{font-size:clamp(54px,13vw,76px)}
+  .hero-photo{height:370px;border-radius:20px 65px 20px 20px}
+  .hero-bottom{font-size:9px}
+  .feature-stage h3{font-size:34px}
+  .visit-card{min-height:280px;padding:28px}
+  .visit-card .arabic{font-size:65px}
+  .footer-inner{flex-direction:column;align-items:start}
+  .footer-copy{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-photo img,.btn{transition:none}
+}
+</style>
+</head>
+
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="header">
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="logo" href="#home">
+        <span class="logo-ar" lang="ar" dir="rtl">ملموم</span>
+        <span class="logo-line"></span>
+        <span class="logo-en">MALMOUM<br>CAFÉ</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">Our Story</a>
+        <a href="#discover">Discover</a>
+        <a href="#visit" class="nav-pill">Visit Us ↗</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Riyadh · Coffee · Culture</div>
+        <h1>Made for<br>the <span>moment.</span></h1>
+        <p class="hero-desc">
+          A good cup of coffee. A little inspiration. A place where Riyadh's creative side comes together.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#discover">Explore Malmoum ↗</a>
+          <a class="text-link" href="#visit">Find Us</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img
+          src="https://ar.timeoutriyadh.com/cloud/artimeoutriyadh/2023/05/09/ipwpp8hB-image.png"
+          alt="Editorial photograph associated with Malmoum Café"
+          onerror="this.style.display='none'">
+        <div class="photo-caption">
+          <div>
+            <strong>Malmoum Café</strong><br>
+            <small>COFFEE × CULTURE</small>
+          </div>
+          <a href="#about" class="circle" aria-label="Discover more">↓</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <span>A café inside Lakum Artspace</span>
+      <span>Riyadh, Saudi Arabia</span>
+    </div>
+  </div>
+</section>
+
+<section class="intro" id="about">
+  <div class="container intro-grid">
+    <div class="reveal">
+      <div class="eyebrow">More than a café</div>
+      <h2>A place to<br>be inspired.</h2>
+    </div>
+    <div class="intro-copy reveal">
+      <p>Malmoum is part of Lakum Artspace — a creative destination bringing together art, design, culture and community. Stop by for coffee, stay for the discoveries.</p>
+      <a class="text-link" href="https://lakumartspace.com/"
+        target="_blank" rel="noopener noreferrer">
+        Explore Lakum Artspace ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="discover">
+  <div class="container">
+    <div class="feature-head reveal">
+      <div>
+        <div class="eyebrow">Discover Malmoum</div>
+        <h2>Find your kind<br>of moment.</h2>
+      </div>
+      <p>One destination, many reasons to stay a little longer.</p>
+    </div>
+
+    <div class="switches" role="group" aria-label="Explore Malmoum experiences">
+      <button class="switch active" data-mode="coffee" aria-pressed="true">Coffee</button>
+      <button class="switch" data-mode="art" aria-pressed="false">Art & Culture</button>
+      <button class="switch" data-mode="community" aria-pressed="false">Community</button>
+    </div>
+
+    <div class="feature-stage">
+      <div aria-live="polite">
+        <h3 id="featureTitle">Your daily pause, reimagined.</h3>
+        <p id="featureText">Make time for coffee in a space where the everyday meets the unexpected.</p>
+      </div>
+
+      <div class="feature-art" id="featureArt" data-mode="coffee" aria-hidden="true">
+        <span id="featureSymbol">☕</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="container visit-grid">
+    <div class="reveal">
+      <div class="eyebrow">Find us in Riyadh</div>
+      <h2>Come for coffee.<br>Stay curious.</h2>
+      <p>
+        Lakum Artspace<br>
+        3685 Al Urubah Branch Road<br>
+        Umm Al Hamam Al Gharbi<br>
+        Riyadh, Saudi Arabia
+      </p>
+      <a class="btn"
+        href="https://www.google.com/maps/search/?api=1&query=Malmoum+Cafe+Riyadh"
+        target="_blank" rel="noopener noreferrer">
+        Get Directions ↗
+      </a>
+    </div>
+
+    <div class="visit-card reveal">
+      <div class="arabic" lang="ar" dir="rtl">ملموم</div>
+      <div class="card-bottom">
+        <strong>See you there.</strong>
+        <small>COFFEE<br>ART<br>CULTURE</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">Malmoum.</div>
+    <div class="footer-copy">
+      Independent portfolio concept, not Malmoum's official website.
+      Editorial photography requires permission for commercial use.
+    </div>
+  </div>
+</footer>
+
+<script>
+const progress = document.getElementById("progress");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+function updateProgress(){
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + "%";
+}
+window.addEventListener("scroll",updateProgress,{passive:true});
+updateProgress();
+
+menuToggle.addEventListener("click",()=>{
+  const open = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(open));
+  menuToggle.textContent = open ? "×" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded","false");
+    menuToggle.textContent="☰";
+  });
+});
+
+const experiences = {
+  coffee:{
+    title:"Your daily pause, reimagined.",
+    text:"Make time for coffee in a space where the everyday meets the unexpected.",
+    symbol:"☕"
+  },
+  art:{
+    title:"A little inspiration with every visit.",
+    text:"Explore the creative atmosphere of Lakum Artspace, where art and culture are always part of the conversation.",
+    symbol:"✳"
+  },
+  community:{
+    title:"Better moments, shared together.",
+    text:"A place to meet, talk, think and enjoy the company of curious minds.",
+    symbol:"✦"
+  }
+};
+
+document.querySelectorAll(".switch").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".switch").forEach(b=>{
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed","false");
+    });
+    button.classList.add("active");
+    button.setAttribute("aria-pressed","true");
+
+    const mode=button.dataset.mode;
+    const data=experiences[mode];
+    document.getElementById("featureTitle").textContent=data.title;
+    document.getElementById("featureText").textContent=data.text;
+    document.getElementById("featureSymbol").textContent=data.symbol;
+    document.getElementById("featureArt").dataset.mode=mode;
+  });
+});
+
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.08});
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}else{
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+}
+</script>
+
+</body>
+</html>
